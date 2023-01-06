@@ -1,18 +1,20 @@
 @extends('adminlte::page')
 
-@section('title', 'FOSE')
+@section('title', 'FOSE Edit')
 
 @section('content_header')
-    <h1>FOSE</h1>
+    <h1>Edición de datos sobre el FOSE</h1>
 @stop
 
 @section('content')
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <form action=" {{ route('enviar_rem') }} " method="POST">
+                <form action=" {{ route('update', $rem_edit) }} " method="POST">
 
                     @csrf
+
+                    @method('put')
 
                     <div class="card card-primary card-outline">
                         <div class="card-header">
@@ -24,19 +26,19 @@
                                 <div class="col-md-4">
                                     {{-- nombre --}}
                                     @if ($errors->has('nombre'))
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control is-invalid" placeholder="Nombres" name="nombre">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
                                         </div>
-                                    @else    
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                            </div>
-                                            <input type="text" class="form-control" placeholder="Nombres" name="nombre" value="{{old('nombre')}}">
+                                        <input type="text" class="form-control is-invalid" placeholder="Nombres" name="nombre" value=" {{ $rem_edit->rem_name }} ">
+                                    </div>
+                                    @else
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
                                         </div>
+                                        <input type="text" class="form-control" placeholder="Nombres" name="nombre" value=" {{ old('nombre', $rem_edit->rem_name) }} ">
+                                    </div>
                                     @endif
                                 </div>
                                 {{-- apellido --}}
@@ -46,27 +48,25 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                                         </div>
-                                        <input type="text" class="form-control is-invalid" placeholder="Apellidos" name="apellido">
+                                        <input type="text" class="form-control is-invalid" placeholder="Apellidos" name="apellido" value=" {{ $rem_edit->rem_apell }} ">
                                     </div>
-                                    @else    
+                                    @else
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Apellidos" name="apellido" value="{{old('apellido')}}">
+                                        <input type="text" class="form-control" placeholder="Apellidos" name="apellido" value=" {{  old('apellido', $rem_edit->rem_apell) }} ">
                                     </div>
                                     @endif
                                 </div>
                                 {{-- numero de expediente --}}
                                 <div class="col-md-4">
-
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-file"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Número de expediente" name="num_exp" value="{{old('num_exp')}}">
+                                        <input type="text" class="form-control" placeholder="Número de expediente" name="num_exp">
                                     </div>
-
                                 </div>
                                 {{-- cargo --}}
                                 <div class="col-md-4">
@@ -74,7 +74,7 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Cargo" name="cargo" value="{{old('cargo')}}">
+                                        <input type="text" class="form-control" placeholder="Cargo" name="cargo">
                                     </div>
                                 </div>
                                 {{-- entidad --}}
@@ -84,38 +84,17 @@
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-building"></i></span>
                                         </div>
-                                        <input type="text" class="form-control is-invalid" placeholder="Entidad" name="entidad">
+                                        <input type="text" class="form-control is-invalid" placeholder="Entidad" name="entidad" value=" {{ $rem_edit->rem_ofi_ent }} ">
                                     </div>
                                     @else
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-building"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Entidad" name="entidad" value="{{old('entidad')}}">
+                                        <input type="text" class="form-control" placeholder="Entidad" name="entidad" value=" {{ old('entidad', $rem_edit->rem_ofi_ent) }} ">
                                     </div>
                                     @endif
                                 </div>
-
-                                {{-- detalles entidad --}}
-                                <div class="col-md-4">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-building"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Detalles de la entidad" name="entidad_det" value="{{old('entidad_det')}}">
-                                    </div>
-                                </div>
-
-                                {{-- asunto --}}
-                                <div class="col-md-8">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-book"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Asunto de la solicitud ingresante" name="asunto">
-                                    </div>
-                                </div>
-
                                 {{-- fecha --}}
                                 <div class="col-md-2">
                                     <div class="input-group mb-3">
@@ -138,10 +117,19 @@
 
                             <hr>
 
-                            <h6><strong>Referencias de la Solicitud</strong></h6>
+                            <h6><strong>Referencias del Documento</strong></h6>
                             <div class="row">
+                                {{-- asunto --}}
+                                <div class="col-md-4">
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-book"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Asunto" name="asunto">
+                                    </div>
+                                </div>
                                 {{-- referencia --}}
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-paste"></i></span>
@@ -149,34 +137,15 @@
                                         <input type="text" class="form-control" placeholder="Documentos de referencia" name="doc_ref">
                                     </div>
                                 </div>
-                                {{-- folios --}}
-                                <div class="col-md-2">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-file"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Folios" name="folios">
-                                    </div>
-                                </div>
-                                {{-- origen --}}
                                 <div class="col-md-4">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text"><strong>ORIGEN&nbsp&nbsp</strong><i class="fas fa-inbox"></i></span>
+                                            <span class="input-group-text"><i class="fas fa-inbox"></i></span>
                                         </div>
                                         <select class="form-control" name="origen">
                                             <option>Interno</option>
                                             <option>Externo</option>
                                         </select>
-                                    </div>
-                                </div>
-                                {{-- elementos adjuntos --}}
-                                <div class="col-md-12">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text"><i class="fas fa-folder"></i></span>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="Elementos adjuntos | puede ingresar enlaces o criterios correspondientes a la solicitud" name="ele_adj">
                                     </div>
                                 </div>
                             </div>
@@ -186,7 +155,7 @@
                         <div class="card-footer">                        
                             <div class="text-right">
                                 <button type="button" class="btn btn-danger">Limpiar</button>
-                                <button type="submit" class="btn btn-primary">Guardar Remitente</button>
+                                <button type="submit" class="btn btn-primary">Actualizar Cambios</button>
                             </div>
                             
                         </div>
