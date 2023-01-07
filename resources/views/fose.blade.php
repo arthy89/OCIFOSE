@@ -70,12 +70,21 @@
                                 </div>
                                 {{-- cargo --}}
                                 <div class="col-md-4">
+                                    @if ($errors->has('cargo'))
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control is-invalid" placeholder="Cargo" name="cargo">
+                                    </div>
+                                    @else
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
                                         </div>
                                         <input type="text" class="form-control" placeholder="Cargo" name="cargo" value="{{old('cargo')}}">
                                     </div>
+                                    @endif
                                 </div>
                                 {{-- entidad --}}
                                 <div class="col-md-4">
@@ -108,22 +117,40 @@
 
                                 {{-- asunto --}}
                                 <div class="col-md-8">
+                                    @if ($errors->has('asunto'))
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-book"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Asunto de la solicitud ingresante" name="asunto">
+                                        <input type="text" class="form-control is-invalid" placeholder="Asunto de la solicitud ingresante" name="asunto">
                                     </div>
+                                    @else
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-book"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Asunto de la solicitud ingresante" name="asunto" value="{{old('asunto')}}">
+                                    </div>
+                                    @endif
                                 </div>
 
                                 {{-- fecha --}}
                                 <div class="col-md-2">
+                                    @if ($errors->has('fecha'))
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-calendar-week"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Fecha" name="fecha">
+                                        <input type="text" class="form-control is-invalid" placeholder="Fecha" name="fecha">
                                     </div>
+                                    @else
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-calendar-week"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Fecha" name="fecha" value="{{old('fecha')}}">
+                                    </div>
+                                    @endif
                                 </div>
                                 {{-- hora --}}
                                 <div class="col-md-2">
@@ -134,6 +161,25 @@
                                         <input type="text" class="form-control" placeholder="Hora" name="hora">
                                     </div>
                                 </div>
+
+                                {{-- Detalles --}}
+                                <div class="col-md-12">
+                                    @if ($errors->has('detalles'))
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                                        </div>
+                                        <textarea class="form-control is-invalid" name="detalles" rows="2" placeholder="Detalles relacionados con la solicitud"></textarea>
+                                    </div>
+                                    @else
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                                        </div>
+                                        <textarea class="form-control" name="detalles" rows="2" placeholder="Detalles relacionados con la solicitud">{{old('detalles')}}</textarea>
+                                    </div>
+                                    @endif
+                                </div>
                             </div>
 
                             <hr>
@@ -142,21 +188,39 @@
                             <div class="row">
                                 {{-- referencia --}}
                                 <div class="col-md-6">
+                                    @if ($errors->has('doc_ref'))
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-paste"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Documentos de referencia" name="doc_ref">
+                                        <input type="text" class="form-control is-invalid" placeholder="Documentos de referencia" name="doc_ref">
                                     </div>
+                                    @else
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-paste"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Documentos de referencia" name="doc_ref" value="{{old('doc_ref')}}">
+                                    </div>
+                                    @endif
                                 </div>
                                 {{-- folios --}}
                                 <div class="col-md-2">
+                                    @if ($errors->has('folios'))
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-file"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Folios" name="folios">
+                                        <input type="text" class="form-control is-invalid" placeholder="Folios" name="folios">
                                     </div>
+                                    @else
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-file"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Folios" name="folios" value="{{old('folios')}}">
+                                    </div>
+                                    @endif
                                 </div>
                                 {{-- origen --}}
                                 <div class="col-md-4">
@@ -172,12 +236,21 @@
                                 </div>
                                 {{-- elementos adjuntos --}}
                                 <div class="col-md-12">
+                                    @if ($errors->has('ele_adj'))
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text"><i class="fas fa-folder"></i></span>
                                         </div>
-                                        <input type="text" class="form-control" placeholder="Elementos adjuntos | puede ingresar enlaces o criterios correspondientes a la solicitud" name="ele_adj">
+                                        <input type="text" class="form-control is-invalid" placeholder="Elementos adjuntos | puede ingresar enlaces o criterios correspondientes a la solicitud" name="ele_adj">
                                     </div>
+                                    @else
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-folder"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Elementos adjuntos | puede ingresar enlaces o criterios correspondientes a la solicitud" name="ele_adj" value="{{old('ele_adj')}}">
+                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

@@ -16,5 +16,5 @@ class Remitente extends Model
     protected $primaryKey = "id_rem";
 
     // habilitamos las columnas necesarias dentro de la base de datos, por ahora las que solo mando del controller
-    protected $fillable = ['rem_name', 'rem_apell', 'rem_cargo', 'rem_ofi_ent'];
+    protected $fillable = ['rem_name', 'rem_apell', 'rem_cargo', 'rem_ofi_ent', 'rem_ofi_ent_det'];
 }

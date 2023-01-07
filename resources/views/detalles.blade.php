@@ -22,56 +22,90 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-success">
-                    <div class="card-header"><h5>Detalles para editar de <strong>{{ $remitente_->rem_name }}</strong> </h5></div>
+                    <div class="card-header"><h5>Detalles sobre <strong>{{ $remitente_->rem_name }}</strong> </h5></div>
                     <div class="card-body">
-                        {{-- nombre --}}
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Nombre</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        <h5><strong>Sobre el Remitente</strong></h5>
+                        <hr>
+                        <div class="row">
+                            {{-- nombre --}}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Nombres</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Nombres" value="{{ $remitente_->rem_name }}" disabled>
+                                    </div>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Nombres" value="{{ $remitente_->rem_name }}" disabled>
+                            </div>
+
+                            {{-- apellidos --}}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Apellidos</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Nombres" value="{{ $remitente_->rem_apell }}" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- cargo --}}
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Cargo</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Nombres" value="{{ $remitente_->rem_cargo }}" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- entidad --}}
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Entidad</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-building"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Nombres" value="{{ $remitente_->rem_ofi_ent }}" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            {{-- detalles entidad --}}
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Detalles de la entidad</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-building"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Nombres" value="{{ $remitente_->rem_ofi_ent_det }}" disabled>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        {{-- apellidos --}}
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Apellidos</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        {{-- ingreso de la solicitud --}}
+                        <h5><strong>Sobre el ingreso de la solicitud</strong></h5>
+
+                            <hr>
+                        <div class="row">
+                            
+                            {{-- fecha --}}
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Detalles de la entidad</label>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="fas fa-clock"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Nombres" value="{{ $reg_remitente_->rr_fec }}" disabled>
+                                    </div>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Apellidos" value="{{ $remitente_->rem_apell }}" disabled>
-                            </div>
-                        </div>
-                        {{-- entidad --}}
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Entidad</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-building"></i></span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Entidad" value="{{ $remitente_->rem_ofi_ent }}" disabled>
-                            </div>
-                        </div>
-                        {{-- entidad detalles --}}
-                        {{-- <div class="form-group">
-                            <label for="exampleInputEmail1">Apellidos</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-building"></i></span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Entidad detalles" value="{{ $remitente_->rem_ofi_ent_det }}">
-                            </div>
-                        </div> --}}
-                        {{-- cargo --}}
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Cargo</label>
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
-                                </div>
-                                <input type="text" class="form-control" placeholder="Cargo" value="{{ $remitente_->rem_cargo }}" disabled>
                             </div>
                         </div>
                     </div>

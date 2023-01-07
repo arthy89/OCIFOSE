@@ -331,7 +331,7 @@ return [
         ],
         [
             'text'        => 'Registros',
-            'route'         => 'home',
+            'route'         => 'registros',
             'icon'        => 'fa fa-table',
         ],
 

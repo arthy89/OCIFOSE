@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('rr_hor')->nullable();
             $table->string('rr_ref')->nullable();
             $table->string('rr_ref_fols')->nullable();
+            $table->string('rr_ori')->nullable();
             $table->string('rr_adj')->nullable();
         });
     }

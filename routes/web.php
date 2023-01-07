@@ -51,6 +51,15 @@ Route::post('/enviarem', [App\Http\Controllers\RemitenteController::class, 'envi
 Route::delete('/remitente/{remitente}', [App\Http\Controllers\RemitenteController::class, 'destroy'])->name('destro_rem');
 
 
+// ? REGISTROS
+
+Route::get('/registros', [App\Http\Controllers\RegRemitenteController::class, 'index'])->name('registros');
+
+// ?
+
+// Route::get('/registros', [App\Http\Controllers\RemitenteController::class, 'fose'])->name('fose');
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

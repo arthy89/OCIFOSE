@@ -36,11 +36,11 @@ class RemitenteController extends Controller
         return view('pruebas', compact('remitente'));
     }
 
-    public function detalles(Remitente $remitente_){
+    public function detalles(Remitente $remitente_, Reg_Remitente $reg_remitente_){
 
-        // return $remitente_;
+        // return $reg_remitente_;
 
-        return view('detalles', compact('remitente_'));
+        return view('detalles', compact(['remitente_','reg_remitente_']));
     }
 
     public function enviar(FoseRemitente $request){
@@ -49,11 +49,20 @@ class RemitenteController extends Controller
             'rem_name' => $request->nombre,
             'rem_apell' => $request->apellido,
             'rem_ofi_ent' => $request->entidad,
+            'rem_ofi_ent_det' => $request->entidad_det,
             'rem_cargo' => $request->cargo,
         ]);
 
         $reg_rem = Reg_Remitente::create([
             'rem_exp' => $request->num_exp,
+            'rr_asunto' => $request->asunto,
+            'rr_fec' => $request->fecha,
+            'rr_hor' => $request->hora,
+            'rr_detalle' => $request->detalles,
+            'rr_ref' => $request->doc_ref,
+            'rr_ref_fols' => $request->folios,
+            'rr_ori' => $request->origen,
+            'rr_adj' => $request->ele_adj,
             'id_rem' => $rem->id_rem,
         ]);
 
