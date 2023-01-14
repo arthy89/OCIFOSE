@@ -1,7 +1,60 @@
 @extends('adminlte::page')
 
 @section('title', 'Generar PDF')
+<style>
+    .ofi {
+    font-family: 'Times New Roman', Times, serif;
+}
 
+.ofi-center {
+    text-align: center;
+}
+
+.ofi-title {
+    text-align: left;
+    font-weight: bold;
+    margin-left: 90px;
+}
+
+.ofi-title-sub {
+    text-align: left;
+    font-weight: bold;
+    margin-left: 100px;
+}
+
+.ofi-text {
+    text-align: justify;
+    margin-left: 100px;
+    margin-right: 85px;
+}
+
+.ofi-text-min {
+    text-align: justify;
+    margin-left: -100px;
+    margin-right: 85px;
+}
+
+
+.ofi-text-sub {
+    text-align: justify;
+    margin-left: 130px;
+    margin-right: 60px;
+}
+
+.ofi-text-r {
+    text-align: right;
+    margin-right: 100px;
+}
+
+.span-text{
+    text-align: justify;
+    padding: 50px;
+}
+
+.ofi-line{
+    margin-left: 108px;
+}
+</style>
 @section('content_header')
     <h1>PDF</h1>
     <button class="btn btn-primary" onclick="window.print()">Imprimir</button>

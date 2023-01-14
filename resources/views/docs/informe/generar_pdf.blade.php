@@ -1,7 +1,43 @@
 @extends('adminlte::page')
 
 @section('title', 'Generar PDF')
+<style>
+    .inf{
+    font-family: 'Times New Roman', Times, serif;
+}
+.inf-center{
+    text-align: center;
+}
 
+.inf-title{
+    text-align: left;
+    font-weight: bold;
+    margin-left: 60px;
+}
+.inf-title-sub {
+    text-align: left;
+    font-weight: bold;
+    margin-left: 100px;
+}
+
+.inf-text {
+    text-align: justify;
+    margin-left: 100px;
+    margin-right: 60px;
+}
+
+.inf-text-min {
+    text-align: justify;
+    margin-left: 100px;
+    margin-right: 530px;
+}
+
+.inf-text-sub {
+    text-align: justify;
+    margin-left: 130px;
+    margin-right: 60px;
+}
+</style>
 @section('content_header')
     <h1>PDF</h1>
     <button class="btn btn-primary" onclick="window.print()">Imprimir</button>
