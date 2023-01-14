@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Remitente;
 use App\Models\Reg_Remitente;
 use Illuminate\Http\Request;
-use App\Http\Requests\FoseRemitente;
 
 class RemitenteController extends Controller
 {

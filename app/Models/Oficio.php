@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reg_Remitente extends Model
+class Oficio extends Model
 {
     use HasFactory;
-    
-    protected $table = "reg_remitente";
+
+    protected $table = "oficio";
 
     public $timestamps = false;
 
-    protected $primaryKey = "id_rr";
+    protected $primaryKey = "id_ofi";
 
     // habilitamos las columnas necesarias dentro de la base de datos, por ahora las que solo mando del controller
-    protected $fillable = ['rem_exp','rr_asunto','rr_fec','rr_hor','rr_detalle','rr_ref','rr_fols','rr_ori','rr_adj','id_rem'];
+    protected $fillable = ['ofi_fec','ofi_dir','ofi_asu','ofi_body','id_inf','ofi_arc','ofi_num','id_rr'];
 }

@@ -36,7 +36,7 @@ Route::get('/buscar', function () {
 // })->middleware(['auth', 'verified'])->name('pruebas');
 
 // registrar fose
-Route::get('/fose', [App\Http\Controllers\RemitenteController::class, 'fose'])->name('fose');
+// Route::get('/fose', [App\Http\Controllers\RemitenteController::class, 'fose'])->name('fose');
 // Route::get('pruebas', [RemitenteController::class, 'pruebas']);
 Route::get('/pruebas', [App\Http\Controllers\RemitenteController::class, 'pruebas'])->name('pruebas');
 // para ver los detalles del remitente
@@ -52,12 +52,49 @@ Route::delete('/remitente/{remitente}', [App\Http\Controllers\RemitenteControlle
 
 
 // ? REGISTROS
-
+// para visualizar todos los registros ingresados
 Route::get('/registros', [App\Http\Controllers\RegRemitenteController::class, 'index'])->name('registros');
-
+// para registrar nuevo registro con remitente
+Route::get('/registro_remitente', [App\Http\Controllers\RegRemitenteController::class, 'create'])->name('registrar_nuevo_remitente');
+// para guardar
+Route::post('/guardar', [App\Http\Controllers\RegRemitenteController::class, 'store'])->name('store');
+// para editar registro
+Route::get('/registro/{registro}/edit', [App\Http\Controllers\RegRemitenteController::class, 'edit'])->name('editar_registro');
+Route::put('/registro/{registro}', [App\Http\Controllers\RegRemitenteController::class, 'update'])->name('actualizar_registro');
+Route::delete('/registro/{registro}', [App\Http\Controllers\RegRemitenteController::class, 'destroy'])->name('eliminar_registro');
 // ?
 
-// Route::get('/registros', [App\Http\Controllers\RemitenteController::class, 'fose'])->name('fose');
+//!  ACCION
+Route::get('/accion/{registro}', [App\Http\Controllers\AccionesController::class, 'show'])->name('accion');
+// generar pdf
+Route::get('/accion/{registro}/generar_pdf_inf', [App\Http\Controllers\AccionesController::class, 'generar_pdf_inf'])->name('generar_pdf_inf');
+
+Route::get('/accion/{registro}/recuperar_pdf_inf/{informe}', [App\Http\Controllers\AccionesController::class, 'recuperar_pdf_inf'])->name('recuperar_pdf_inf');
+
+Route::get('/accion/{registro}/generar_pdf_ofi', [App\Http\Controllers\AccionesController::class, 'generar_pdf_ofi'])->name('generar_pdf_ofi');
+
+Route::get('/accion/{registro}/recuperar_pdf_ofi/{oficio}', [App\Http\Controllers\AccionesController::class, 'recuperar_pdf_ofi'])->name('recuperar_pdf_ofi');
+
+Route::get('/accion/{registro}/generar_fose', [App\Http\Controllers\AccionesController::class, 'generar_fose'])->name('generar_pdf_fose');
+
+Route::get('/accion/{registro}/recuperar_pdf_fose/{fose}', [App\Http\Controllers\AccionesController::class, 'recuperar_pdf_fose'])->name('recuperar_pdf_fose');
+//! 
+
+
+// TODO/ INFORME
+Route::get('/accion/informe/{registro}', [App\Http\Controllers\InformeController::class, 'create'])->name('crear_inf');
+Route::post('accion/informe/guardar/{registro}', [App\Http\Controllers\InformeController::class, 'store'])->name('generar_inf');
+// todo
+
+// ? OFICIO 
+Route::get('/accion/oficio/{registro}', [App\Http\Controllers\OficioController::class, 'create'])->name('crear_ofi');
+Route::post('accion/oficio/guardar/{registro}', [App\Http\Controllers\OficioController::class, 'store'])->name('generar_ofi');
+// ?
+
+// ! FOSE 
+Route::get('/accion/fose/{registro}', [App\Http\Controllers\FoseController::class, 'create'])->name('crear_fose');
+Route::post('accion/fose/guardar/{registro}', [App\Http\Controllers\FoseController::class, 'store'])->name('generar_fose');
+// !
 
 
 Route::middleware('auth')->group(function () {

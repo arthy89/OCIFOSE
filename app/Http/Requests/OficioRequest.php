@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FoseRemitente extends FormRequest
+class OficioRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,7 @@ class FoseRemitente extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=> 'required',
-            'apellido'=> 'required',
-            'entidad'=> 'required',
-            'cargo' => 'required',
-            'asunto' => 'required',
-            'detalles' => 'required',
-            'fecha' => 'required',
-            'doc_ref' => 'required',
-            'folios' => 'required',
-            'ele_adj' => 'required'
+            'cuerpo'=> 'required',
             //
         ];
     }

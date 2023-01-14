@@ -315,38 +315,33 @@ return [
             'icon'        => 'fas fa-search',
         ],
         [
-            'text'        => 'FOSE',
-            'route'         => 'fose',
+            'text'        => 'Nuevo registro',
+            'route'         => 'registrar_nuevo_remitente',
             'icon'        => 'far fa-fw fa-file',
         ],
-        [
-            'text'        => 'Acción',
-            'route'         => 'home',
-            'icon'        => 'fa fa-pen',
-        ],
-        [
-            'text'        => 'Pruebas',
-            'route'         => 'pruebas',
-            'icon'        => 'far fa-fw fa-file',
-        ],
+        // [
+        //     'text'        => 'Acción',
+        //     'route'         => 'accion',
+        //     'icon'        => 'fa fa-pen',
+        // ],
         [
             'text'        => 'Registros',
             'route'         => 'registros',
             'icon'        => 'fa fa-table',
         ],
 
-        ['header' => 'REDACTAR DOCUMENTOS'],
+        // ['header' => 'REDACTAR DOCUMENTOS'],
 
-        [
-            'text'        => 'Informe',
-            'route'         => 'home',
-            'icon'        => 'far fa-folder',
-        ],
-        [
-            'text'        => 'Oficio',
-            'route'         => 'home',
-            'icon'        => 'far fa-file-pdf',
-        ],
+        // [
+        //     'text'        => 'Informe',
+        //     'route'         => 'home',
+        //     'icon'        => 'far fa-folder',
+        // ],
+        // [
+        //     'text'        => 'Oficio',
+        //     'route'         => 'home',
+        //     'icon'        => 'far fa-file-pdf',
+        // ],
         
     ],
 

@@ -22,7 +22,7 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>NOMBRES Y APELLIDOS</th>
-                                        <th>ASUNTO</th>
+                                        <th width="300px">ASUNTO</th>
                                         <th>DOCUMENTO DE REFERENCIA</th>
                                         <th>ENTIDAD</th>
                                         <th>FECHA</th>
@@ -50,7 +50,14 @@
                                                 @endforeach
                                             </td>
                                             <td> {{ $registro->rr_fec }}</td>
-                                            <td><a href="" class="btn btn-warning btn-sm">Editar</a>&nbsp&nbsp<a href="" class="btn btn-danger btn-sm">Acción</a></td>
+                                            <td>
+                                                <form action="{{route('eliminar_registro', $registro)}}" method="POST">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <a href="{{ route('editar_registro', $registro->id_rr) }}" class="btn btn-warning btn-sm">Editar</a>&nbsp<a href="{{route('accion', $registro->id_rr) }}" class="btn btn-danger btn-sm">Acción</a>
+                                                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
